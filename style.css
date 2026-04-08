@@ -358,10 +358,181 @@ body {
 .secondary-btn:hover { background-color: #f0f0f0; color: var(--text-black); }
 
 /* Responsive Adjustments */
-@media (max-width: 600px) {
-    .reveal-text { font-size: 2.2rem; }
-    .card-perspective { height: 90vh; }
-    .card-inside h3 { font-size: 1.2rem; }
-    .card-inside p { font-size: 0.95rem; line-height: 1.4; }
-    .final-message-container { padding: 20px; }
+@media (max-width: 768px) {
+    /* Global scene padding */
+    .scene {
+        padding: 15px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Buttons - bigger touch targets */
+    .btn {
+        padding: 14px 28px;
+        font-size: 1rem;
+        min-height: 48px;
+    }
+
+    /* Scene 1: Intro */
+    .video-placeholder {
+        font-size: 1.4rem;
+    }
+    .overlay-text {
+        bottom: 15%;
+        font-size: 1rem;
+        padding: 8px 16px;
+        width: 90%;
+        text-align: center;
+    }
+    .overlay-text h2 {
+        font-size: 1.1rem;
+    }
+    .skip-btn-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    /* Scene 2: Reveal */
+    .reveal-text {
+        font-size: 1.8rem;
+    }
+    .reveal-sub {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    .balloons-container {
+        font-size: 2.2rem;
+        gap: 15px;
+    }
+
+    /* Scene 3 & 8: Greeting Cards */
+    .card-perspective {
+        width: 95%;
+        max-width: 100%;
+        height: 85vh;
+    }
+    .card-cover h2 {
+        font-size: 1.5rem;
+    }
+    .card-inside {
+        padding: 20px 15px;
+        overflow-y: auto;
+    }
+    .card-inside h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    .card-inside p {
+        font-size: 0.9rem;
+        line-height: 1.45;
+        margin-bottom: 8px;
+    }
+    .card-inside .signature {
+        font-size: 0.95rem;
+    }
+
+    /* Scene 4: Cake */
+    .cake-container {
+        padding: 20px 15px;
+        width: 90%;
+        max-width: 100%;
+        border-radius: 15px;
+    }
+    .main-person-image img {
+        height: 180px;
+        width: auto;
+        max-width: 100%;
+    }
+    .cake-box {
+        width: 120px;
+        height: 120px;
+    }
+    .cake-instruction {
+        font-size: 1.2rem;
+    }
+
+    /* Scene 5: Slideshow */
+    .slideshow-container {
+        width: 95%;
+        padding: 12px;
+    }
+    .slide img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .caption {
+        font-size: 1.1rem;
+    }
+
+    /* Scene 6: Final Message */
+    .final-message-container {
+        padding: 20px 15px;
+        width: 90%;
+        max-width: 100%;
+    }
+    .final-message-container p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 14px;
+    }
+
+    /* Scene 7: Gift Box */
+    .gift-area {
+        width: 90%;
+        text-align: center;
+    }
+    .gift-area h2 {
+        font-size: 1.3rem;
+    }
+    .gift-box {
+        width: 100px;
+        height: 80px;
+    }
+    .gift-lid {
+        width: 110px;
+    }
+    .gift-message h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Scene 8: Final Card */
+    .final-screen-content h1 {
+        font-size: 2rem;
+    }
+    .secondary-btn {
+        margin-top: 20px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+    .reveal-text {
+        font-size: 1.5rem;
+    }
+    .card-perspective {
+        height: 90vh;
+    }
+    .card-inside {
+        padding: 15px 10px;
+    }
+    .card-inside h3 {
+        font-size: 1rem;
+    }
+    .card-inside p {
+        font-size: 0.85rem;
+    }
+    .main-person-image img {
+        height: 140px;
+    }
+    .slide img {
+        height: 180px;
+    }
+    .overlay-text h2 {
+        font-size: 0.95rem;
+    }
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
 }
