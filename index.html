@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise 😄</title>
+    <!-- Use Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Autoplay Audio (Handled via JS upon first interaction) -->
+    <audio id="bgMusic" loop>
+        <!-- A placeholder instrumental music source -->
+        <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_d0bf2ab1ec.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="cakeSound">
+        <!-- Short celebration/yay sound -->
+        <source src="https://cdn.pixabay.com/audio/2021/08/04/audio_0625c1539c.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="app">
+        
+        <!-- Scene 1: Comedy Intro -->
+        <section id="scene-1" class="scene active">
+            <div class="video-placeholder">
+                <div class="meme-text">😄 When you realize it's your special dost's birthday...</div>
+                <div class="meme-visual">🐕🏃‍♂️💨</div>
+            </div>
+            <div class="overlay-text">
+                <h2>Aaj kisi special dost ka birthday hai 😄</h2>
+            </div>
+            <div class="skip-btn-container">
+                <button class="btn" id="skipScene1">Skip 😄</button>
+            </div>
+        </section>
+
+        <!-- Scene 2: Birthday Reveal -->
+        <section id="scene-2" class="scene hidden blue-white-bg">
+            <div class="content-center">
+                <h1 class="reveal-text">Happy Birthday Dost 🎂</h1>
+                <p class="reveal-sub">Yeh chota sa surprise sirf tumhare liye hai 😄</p>
+                <div class="balloons-container">
+                    <div class="balloon">🎈</div>
+                    <div class="balloon">🎈</div>
+                    <div class="balloon">🎈</div>
+                </div>
+                <button class="btn primary-btn" id="startBtn">Start</button>
+            </div>
+        </section>
+
+        <!-- Scene 3: First Greeting Card -->
+        <section id="scene-3" class="scene hidden blue-white-bg">
+            <div class="card-perspective">
+                <div class="greeting-card" id="greetingCard">
+                    <div class="card-cover">
+                        <h2>Open Me 😄</h2>
+                    </div>
+                    <div class="card-inside">
+                        <h3>Happy Birthday My big support and Sach dost 😄 🎂</h3>
+                        <p>Aaj ka din mere liye bhi utna hi special hai jitna tumko hai kyunki tum sirf mera dost nahi ek bhai ek supporter and ek sach dost hai ajj kal ki duniya me.</p>
+
+                        <p>Har situation mein tum mere saath sath teh chahe wo achi hu ya buri hamesha tum mere sath teh.<br>Uski liye shukriya dil se shukriya.</p>
+
+                        <p>Chahe khushi ho ya mushkil waqt, tum kabhi peeche nahi hatey.<br>Aise dost bohot kam milte hai aur main honestly lucky hoon ke tu meri life mein hai. Aur toh tum blessings se kaam ni hai.</p>
+
+                        <p>Main dua karti hu ke Allah tumhe hamesha khush rakhe and tumhare har choti badi khwahish poori kare and tumhe success sukoon aur long life de 😄</p>
+
+                        <p>Tum hamesha aise hi haste rehna 😄</p>
+
+                        <p>Aaj ka din full enjoy karo kyunki tum deserve karte hai duniya ki har khushi 😄</p>
+                        <br>
+                        <p class="signature">Once again, Happy Birthday Dost 😄</p>
+                        
+                        <button class="btn" id="nextScene3Btn">Next</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 4: Cake Scene -->
+        <section id="scene-4" class="scene hidden">
+            <!-- Beach Background -->
+            <div class="beach-bg"></div>
+            
+            <div class="cake-container">
+                <div class="main-person-image">
+                    <img src="main_image.jpg" alt="Main Photo">
+                </div>
+                <div class="cake-box" id="theCake">
+                    <div class="cake-tier">
+                        <div class="sugar-decor"></div>
+                        <div class="candle">
+                            <div class="flame"></div>
+                            <div class="sparkles">✨</div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="cake-instruction">🎂 Time for Cake!</h2>
+                <button class="btn highlight-btn" id="cutCakeBtn">Cut the Cake 🎂</button>
+            </div>
+        </section>
+
+        <!-- Scene 5: Photo Memories -->
+        <section id="scene-5" class="scene hidden blue-white-bg">
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="photo1.jpg" alt="Memory">
+                    <div class="caption">Best Moments 😄</div>
+                </div>
+                <div class="slide">
+                    <img src="photo2.jpg" alt="Memory">
+                    <div class="caption">Crazy Memories 😄</div>
+                </div>
+                <div class="slide">
+                    <img src="photo3.jpg" alt="Memory">
+                    <div class="caption">Good Times 😄</div>
+                </div>
+                <div class="slide">
+                    <img src="photo4.jpg" alt="Memory">
+                    <div class="caption">Unforgettable 😄</div>
+                </div>
+                <div class="slide-nav">
+                    <button class="btn" id="nextSlideBtn">Next Memory</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 6: Final Message Card -->
+        <section id="scene-6" class="scene hidden blue-white-bg">
+            <div class="final-message-container">
+                <p>I know mai hamesha tumhra sath ni de magr mai hamesha sath hu tumhre.</p>
+
+                <p>I know mai kabhi birthday wishes ni kre na hi kabhi Acha gift de magr <br>
+                Tum liye mera huna hi gift hai 😁</p>
+
+                <p>Aur rahe baat wishes krne ki<br>
+                Zarori ni hai time pe wish krna Ya celebrate krna bas tum khush hai meri liye wahii matter krta.</p>
+
+                <p>Shyd ye mere first and last wishes hai tumhre liye<br>
+                No matter what tum mere dua ka hamesha hissa hai.</p>
+
+                <p>Bas tum khush rahu apni life me yahi chahtu mai aur past ko bhul jao<br>
+                Present enjoy kro bas 😄</p>
+
+                <button class="btn" id="nextScene6Btn">Next</button>
+            </div>
+        </section>
+
+        <!-- Scene 7: Gift Box Surprise -->
+        <section id="scene-7" class="scene hidden blue-white-bg flex-center">
+            <div class="gift-area" id="giftBoxContainer">
+                <h2 id="giftTitle">Click to Open Your Gift 😄</h2>
+                <div class="gift-box" id="giftBox">
+                    <div class="gift-lid"></div>
+                    <div class="gift-base">
+                        <span>🎁</span>
+                    </div>
+                </div>
+                <!-- Fake money particles will spawn here via JS -->
+            </div>
+            <div class="gift-message hidden" id="giftMessage">
+                <h2>Surprise 😄</h2>
+                <p>Unlimited Happiness Unlocked</p>
+                <button class="btn" id="nextScene7Btn">Continue</button>
+            </div>
+        </section>
+
+        <!-- Scene 8: Final Card -->
+        <section id="scene-8" class="scene hidden blue-white-bg">
+            <div class="card-perspective">
+                <div class="greeting-card" id="finalCard">
+                    <div class="card-cover">
+                        <h2>One Last Note 😄</h2>
+                    </div>
+                    <div class="card-inside">
+                        <h3>Thank you for being there 😄</h3>
+                        <p>I hope you absolutely loved this little surprise!</p>
+                        <p>Here is to many more amazing years ahead together.</p>
+                        <br>
+                        <p class="signature">Happy Birthday Dost 🎂</p>
+                        
+                        <button class="btn secondary-btn" id="exitBtn">Complete</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Main Logic Script -->
+    <script src="script.js"></script>
+</body>
+</html>

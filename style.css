@@ -1,0 +1,367 @@
+/* Reset and Core Variables */
+:root {
+    --primary-blue: #005fce;
+    --light-blue: #e6f0fa;
+    --navy-blue: #003366;
+    --text-black: #111111;
+    --white: #ffffff;
+    --font-outfit: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-outfit);
+    background-color: var(--white);
+    color: var(--text-black);
+    overflow: hidden; /* Manage overflow conditionally via JS/Scenes */
+}
+
+/* Button Styles */
+.btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 95, 206, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+.btn:hover {
+    background-color: var(--navy-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 95, 206, 0.3);
+}
+
+/* Scenes Generic */
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+.hidden {
+    display: none !important;
+}
+
+.blue-white-bg {
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Scene 1: Video Intro Placeholder */
+#scene-1 {
+    background-color: var(--navy-blue);
+    color: var(--white);
+}
+.video-placeholder {
+    font-size: 2rem;
+    animation: zoom 10s infinite alternate;
+}
+@keyframes zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+.overlay-text {
+    position: absolute;
+    bottom: 20%;
+    background: rgba(255,255,255,0.9);
+    color: var(--text-black);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+.skip-btn-container {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+/* Scene 2: Reveal */
+.reveal-text {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    animation: fadeInUp 1s ease forwards;
+}
+.reveal-sub {
+    font-size: 1.2rem;
+    animation: fadeInUp 1.5s ease forwards;
+}
+.balloons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 3rem;
+    margin: 20px 0;
+}
+.balloon {
+    animation: float 3s infinite ease-in-out alternate;
+}
+.balloon:nth-child(2) { animation-delay: 0.5s; }
+.balloon:nth-child(3) { animation-delay: 1s; }
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scene 3: Greeting Card */
+.card-perspective {
+    width: 90%;
+    max-width: 500px;
+    height: 70vh;
+    perspective: 1500px;
+}
+.greeting-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.greeting-card.is-open {
+    transform: rotateY(-160deg);
+}
+.card-cover, .card-inside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    background-color: var(--white);
+    border: 3px solid var(--primary-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-cover {
+    z-index: 2;
+    background: linear-gradient(135deg, var(--primary-blue), var(--navy-blue));
+    color: var(--white);
+    border-color: var(--white);
+    cursor: pointer;
+}
+.card-inside {
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    display: block; /* enable vertical scrolling if content is too long */
+    text-align: left;
+}
+.card-inside h3 { margin-bottom: 20px; color: var(--primary-blue); text-align: center;}
+.card-inside p { margin-bottom: 12px; line-height: 1.5; font-size: 1rem; }
+.card-inside .signature { font-weight: bold; text-align: right; margin-top: 10px; color: var(--primary-blue); }
+.card-inside button { margin: 20px auto; display: block; }
+
+/* Scene 4: Cake Scene */
+.beach-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('beach.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.8;
+}
+.cake-container {
+    background: rgba(255,255,255,0.85);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.main-person-image {
+    margin-bottom: 20px;
+}
+.main-person-image img {
+    height: 250px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    object-fit: cover;
+}
+.cake-box {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.cake-tier {
+    width: 120px;
+    height: 60px;
+    background-color: #fce4ec;
+    border-radius: 8px 8px 0 0;
+    border: 3px solid var(--primary-blue);
+    position: relative;
+}
+.candle {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 30px;
+    background-color: #ffcccc;
+    border: 1px solid #ff9999;
+}
+.flame {
+    position: absolute;
+    top: -15px;
+    left: -2px;
+    width: 12px;
+    height: 18px;
+    background-color: #ffb347;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s infinite alternate;
+}
+@keyframes flicker {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+.sparkles {
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-size: 1.5rem;
+    animation: ping 1s infinite;
+}
+@keyframes ping {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2); }
+}
+
+/* Scene 5: Gallery */
+.slideshow-container {
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 2px solid var(--primary-blue);
+}
+.slide {
+    display: none;
+    animation: fadeInSlide 1s ease-in-out;
+}
+.slide.active { display: block; }
+.slide img { width: 100%; border-radius: 8px; height: 350px; object-fit: cover; }
+.caption { margin-top: 10px; font-size: 1.5rem; color: var(--primary-blue); font-weight: bold; }
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Scene 6: Final Message Card */
+.final-message-container {
+    max-width: 600px;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--primary-blue);
+    text-align: left;
+}
+.final-message-container p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
+
+/* Scene 7: Gift Box */
+.gift-area { cursor: pointer; position: relative;}
+.gift-box {
+    width: 120px; height: 100px;
+    background-color: var(--primary-blue);
+    margin: 30px auto; position: relative;
+    border-radius: 5px;
+}
+.gift-lid {
+    width: 130px; height: 30px;
+    background-color: var(--navy-blue);
+    position: absolute; top: -30px; left: -5px;
+    border-radius: 5px;
+    transition: transform 0.5s ease;
+}
+.gift-box.open .gift-lid { transform: translateY(-50px) rotate(15deg); opacity: 0; }
+.gift-base { font-size: 3rem; display: flex; justify-content: center; align-items: center; height: 100%; }
+
+.money-particle {
+    position: absolute; font-size: 2rem;
+    animation: flyOut 1s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+}
+@keyframes flyOut {
+    0% { transform: translateY(0) scale(0.5); opacity: 1; }
+    100% { transform: translateY(var(--y)) translateX(var(--x)) scale(1.5); opacity: 0; }
+}
+.gift-message { margin-top: 20px; animation: fadeInUp 1s forwards; }
+
+/* Scene 8: Comments */
+.comment-box {
+    background: var(--white);
+    padding: 30px; border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    width: 90%; max-width: 500px;
+}
+.comment-box textarea {
+    width: 100%; height: 120px;
+    padding: 15px; border: 2px solid var(--light-blue);
+    border-radius: 8px; font-family: inherit; font-size: 1rem;
+    resize: none; outline: none; margin-top: 15px;
+}
+.comment-box textarea:focus { border-color: var(--primary-blue); }
+
+/* Scene 9: Exit */
+.final-screen-content h1 { font-size: 3rem; color: var(--primary-blue); margin-top: 20px; }
+.secondary-btn { background-color: var(--white); color: var(--text-black); border: 2px solid var(--text-black); margin-top: 30px;}
+.secondary-btn:hover { background-color: #f0f0f0; color: var(--text-black); }
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .reveal-text { font-size: 2.2rem; }
+    .card-perspective { height: 90vh; }
+    .card-inside h3 { font-size: 1.2rem; }
+    .card-inside p { font-size: 0.95rem; line-height: 1.4; }
+    .final-message-container { padding: 20px; }
+}
