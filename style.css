@@ -215,10 +215,12 @@ body {
     margin-bottom: 20px;
 }
 .main-person-image img {
-    height: 250px;
+    max-height: 250px;
+    width: auto;
+    max-width: 100%;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    object-fit: cover;
+    object-fit: contain;
 }
 .cake-box {
     width: 150px;
@@ -289,7 +291,7 @@ body {
     animation: fadeInSlide 1s ease-in-out;
 }
 .slide.active { display: block; }
-.slide img { width: 100%; border-radius: 8px; height: 350px; object-fit: cover; }
+.slide img { width: 100%; border-radius: 8px; max-height: 350px; height: auto; object-fit: contain; }
 .caption { margin-top: 10px; font-size: 1.5rem; color: var(--primary-blue); font-weight: bold; }
 @keyframes fadeInSlide {
     from { opacity: 0; transform: scale(0.95); }
@@ -439,9 +441,10 @@ body {
         border-radius: 15px;
     }
     .main-person-image img {
-        height: 180px;
+        max-height: 160px;
         width: auto;
         max-width: 100%;
+        object-fit: contain;
     }
     .cake-box {
         width: 120px;
@@ -457,9 +460,10 @@ body {
         padding: 12px;
     }
     .slide img {
-        height: 220px;
+        max-height: 220px;
+        height: auto;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
     }
     .caption {
         font-size: 1.1rem;
@@ -523,10 +527,11 @@ body {
         font-size: 0.85rem;
     }
     .main-person-image img {
-        height: 140px;
+        max-height: 120px;
     }
     .slide img {
-        height: 180px;
+        max-height: 160px;
+        height: auto;
     }
     .overlay-text h2 {
         font-size: 0.95rem;
